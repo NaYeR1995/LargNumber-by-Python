@@ -4,7 +4,6 @@ import sys
 
 
 def main():
-    listLength = len(BookCollection)
 
     while True:
         print("What would you like to do?")
@@ -15,6 +14,7 @@ def main():
 
 # i Used If statement to select the Chosen operation depended on the User Input
         operation = input("Choice: ").lower()
+
         if (operation == "add" or operation == 'a'):
             add_book()
             print("Book added!")
@@ -29,6 +29,7 @@ def main():
 
 
 BookCollection = []
+
 # this Fn add to BookCollection [list of objects] the New Book Info.
 
 
@@ -52,16 +53,15 @@ def list_books():
         count += 1
 
 # this Fn find to me specific Book depend on it's Title and show all Info about it from BookCollection [list of objects]
-
-
 def search_books():
     BookTitle = input("What is the Title Of Book? ").lower()
     for book in BookCollection:
         if (BookTitle == book["title"].lower()):
             BookAuthor = book["author"]
-            bookInfo = (('1. Title: {BookTitle}, Author: {BookAuthor}').format(
-                BookTitle=BookTitle, BookAuthor=BookAuthor))
-        print(bookInfo)
+            bookInfo = (('1. Title: {BookTitle}, Author: {BookAuthor}').format(BookTitle=BookTitle, BookAuthor=BookAuthor))
+            print(bookInfo)
+        else:
+            print("This Book did not Exist, Pleas try again")
 
 
 main()
