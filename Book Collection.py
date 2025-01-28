@@ -28,8 +28,8 @@ def main():
             sys.exit()
 
 
-BookCollection = []
-
+BookCollection = [
+]
 # this Fn add to BookCollection [list of objects] the New Book Info.
 
 
@@ -47,21 +47,29 @@ def list_books():
     for book in BookCollection:
         BookTitle = book["title"]
         BookAuthor = book["author"]
-        bookInfo = (('{count}. Title: {BookTitle}, Author: {BookAuthor}').format(
-            count=count, BookTitle=BookTitle, BookAuthor=BookAuthor))
+        bookInfo = (('{count}. Title: {BookTitle}, Author: {BookAuthor}').format(count=count, BookTitle=BookTitle, BookAuthor=BookAuthor))
         print(bookInfo)
         count += 1
 
 # this Fn find to me specific Book depend on it's Title and show all Info about it from BookCollection [list of objects]
+
+
 def search_books():
     BookTitle = input("What is the Title Of Book? ").lower()
-    for book in BookCollection:
-        if (BookTitle == book["title"].lower()):
-            BookAuthor = book["author"]
-            bookInfo = (('1. Title: {BookTitle}, Author: {BookAuthor}').format(BookTitle=BookTitle, BookAuthor=BookAuthor))
-            print(bookInfo)
-        else:
-            print("This Book did not Exist, Pleas try again")
+    found = False 
+    count = 1
 
+    
+    for book in BookCollection:
+        if BookTitle == book["title"].lower():
+            BookAuthor = book["author"]
+            bookInfo = ('{count}. Title: {BookTitle}, Author: {BookAuthor}').format(count=count, BookTitle=BookTitle, BookAuthor=BookAuthor)
+            count += 1
+            print(bookInfo)
+            found = True
+
+    
+    if not found:  # If the book was not found after the loop
+        print("This Book did not Exist, Please try again")
 
 main()
